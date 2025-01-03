@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    width: 100%;
+    height: fit-content;
+    font-family: 'Courier New', Courier, monospace;
+    outline: none !important;
+   
+
+}
+
+#app{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+
+.sketch-container{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+@media (max-width: 767px){
+    .sketch-container{
+        width: 90%;
+    }
+}
