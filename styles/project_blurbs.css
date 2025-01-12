@@ -1,24 +1,38 @@
 .project-blurb{
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
     width: 100%;
     height: 100%;
+
 }
 
 
 .project-blurb .title{
     font-size: 13px;
+    width: fit-content;
 
 }
 
 .project-blurb .date{
     font-size: 10px;
+    width: fit-content;
 
 }
 
+.project-blurb .preview-image{
+    width: 100%;
+    height: auto;
+}
+
 .project-blurb .description{
-    font-size: 9px;
+    font-size: 8px;
+    height: 25%;
+    min-height: 50px;
+    /* min-height: 10%;
+    max-height: 20%; */
+    overflow-y: auto;
+    /* background-color: pink; */
 
 }
 
@@ -32,4 +46,39 @@
 
 iframe{
     border: .1px solid black;
+}
+
+.image-controls{
+    /* position: absolute; */
+    top: 100px;
+    font-size:8px;
+    position:absolute;
+   
+    /* width: fit-content; */
+    left: -17px;
+    width: calc(100% + 34px);
+}
+
+.image-control{
+    padding: 5px;
+    background-color: inherit;
+    color: black;
+
+    font-weight: 300;
+    flex-basis: 0;
+    /* top: -30px; */
+}
+.image-control:hover{
+    border: .5px solid black;
+    color: black;
+    width: fit-content;
+    font-weight: 800;
+}
+
+.image-control:active{
+    border: .5px solid black;
+    color: white;
+    background-color: black;
+    width: fit-content;
+    font-weight: 800;
 }

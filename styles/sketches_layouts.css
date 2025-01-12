@@ -1,0 +1,39 @@
+.grid.sketches-layout{
+
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+    height: fit-content;
+    gap: 0px;
+    align-items: center;
+    padding: 30px;
+    /* background-color: pink; */
+
+}
+
+/* Determines the size of each sketch */
+.sketch-container{
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+
+    width: 33.33%;
+    aspect-ratio : 1 / 1;
+
+    border: .5px solid black;
+    padding: 50px;
+
+}
+
+/*mobile is bigger */
+@media (max-width: 767px){
+    .sketch-container{
+        width: 50%;
+    }
+}
+
+@media (max-width: 600px){
+    .sketch-container{
+        width: 100%;
+    }
+}

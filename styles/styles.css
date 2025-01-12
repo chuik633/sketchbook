@@ -5,11 +5,12 @@
     height: fit-content;
     font-family: 'Courier New', Courier, monospace;
     outline: none !important;
-   
+   position: relative;
 
 }
 
 #app{
+    background-color:#EFEBDF;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -17,14 +18,31 @@
 }
 
 
-.sketch-container{
+.row {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    width: 60%;
+    flex-direction: row;
 }
 
-@media (max-width: 767px){
-    .sketch-container{
-        width: 90%;
-    }
+.column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.med-gap{
+    gap: 10px;
+}
+
+.space-between{
+    justify-content: space-between;
+}
+
+.hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Edge */
 }

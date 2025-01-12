@@ -11,17 +11,44 @@ const sketch_data = [
                 I experimented with using p5 to create rotating heads, and with using an API so that my family could modify a shared spreadsheet / see live updates.
              
                 `,
-            code_link = 'https://github.com/chuik633/Puzzle'
+            code_link = 'https://github.com/chuik633/Puzzle',
+            images = ['1.png']
     ),
     new Sketch(
         'ColorSearch', 
         project_link = 'https://chuik633.github.io/ColorSearch/',
-        date = 'Fall 2024',
+        date = 'December 2024',
         description = `
            For this project, I was interesting in extending my "Hats of the Smithsonian" project by focusing on creating a color driven search. I extended the data to include all fashion related objects from the Smithsonian Open Access Collection as I was also curious about different colors in fabrics, jewelry, shirts, pants, etc. I had a lot of fun experimenting with extracting color swatches and learnning d3.force. I also added an experimental "show gradients" button to create some coded art based on the selected colors!
             `,
-        code_link = 'https://github.com/chuik633/ColorSearch'
+        code_link = 'https://github.com/chuik633/ColorSearch',
+        images = ['expand-cards.gif', 'move-clusters.gif', 'zoom.gif']
     ),
+
+    new Sketch(
+        'Fish Lengths', 
+        project_link = 'https://chuik633.github.io/major-studio1-code-chuik633/',
+        date = 'October 2024',
+        description = `
+          This visualization explores the relationship between a fish’s length and the depth that they live in. I played around with translating the scale of a fish to the screen. As you scroll down, the “depth” of your screen’s view corresponds to the depth of the ocean that you are exploring! I also created a big picture plot on the side which shows the minimum, average, and maximum lengths of fish at all depths. As you scroll, this plot highlights your current depth region relative to all of the data to help orient you. For fun, I also created a dynamic “fish” sketch that moves with your mouse to help you visualize “how long a fish is”.
+            `,
+        code_link = 'https://github.com/chuik633/major-studio1-code-chuik633',
+        images = ['scroll.gif','popup.gif',  'snaptogrid.gif']
+    ),
+
+
+    new Sketch(
+        'Hats of the Smithsonian', 
+        project_link = 'https://chuik633.github.io/QualitativeDataVizProject/',
+        date = 'November 2024',
+        description = `
+           I collaborated with Josh Strupp on this project to create an interactive exploration of the hat collection at the Smithsonian! We organized the hats by their most vibrant colors on an HSL axis and used d3 force to allow users to move them around and reveal the hats belonging to each color. We also bucketted the hats by the date they were made, so as you scroll on the page, it controls the timeline and the hats you see.
+            `,
+        code_link = 'https://github.com/chuik633/QualitativeDataVizProject',
+        images = ['intro_screen.gif','collection_1.gif', 'cursor_1.gif', 'display_1.gif', 'scroll_1.gif']
+    ),
+
+
 
 
 

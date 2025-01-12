@@ -1,11 +1,7 @@
 console.log(sketch_data)
 
 const app = d3.select("#app")
-for(const sketch of sketch_data){
-    const sketch_container = app.append('div').attr('class', 'sketch-container')
 
-    
+const sketches = new Sketches(sketch_data)
 
-    sketch.appendBlurb(sketch_container)
-    sketch.appendPreview(sketch_container)
-}
+sketches.displaySketchesGrid(app)
