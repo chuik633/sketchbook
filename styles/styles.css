@@ -3,20 +3,60 @@
     margin: 0px;
     width: 100%;
     height: fit-content;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Overpass Mono', monospace;
+    
+      /* font-family: 'Courier New', Courier, monospace; */
+    font-weight:100;
     outline: none !important;
    position: relative;
+   
+
 
 }
+:root{
+    --default-back:#FBFAF7;
+    --current-back:#FBFAF7;
+    --current-front: #212121;
+    --black: #212121;
 
+}
 #app{
-    background-color:#EFEBDF;
+   
+    background-color:var(--current-back);
     padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 50px;
+    width: 100vw;
+    height: 100vh;
+    overflow-x:hidden;
 }
 
+.page{
+    
+    position:absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--current-back);
+    /* background-color: pink; */
+    padding-top: 100px;
+    
+}
+.header{
+    align-items: center;
+    justify-content: space-evenly;
+    position: fixed;
+    top: 50px;
+    z-index: 5;
+}
+.footer{
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 50px ;
+    position: fixed;
+    bottom: 20px;
+    z-index: 5;
+}
 
 .row {
     width: 100%;
@@ -45,4 +85,12 @@
 
 .hide-scrollbar::-webkit-scrollbar {
     display: none; /* Chrome, Safari, and Edge */
+}
+
+p{
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 200%; /* 30px */
+    letter-spacing: 2.25px;
 }

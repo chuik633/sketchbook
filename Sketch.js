@@ -1,5 +1,5 @@
 class Sketch{
-    constructor(name, project_link, date = undefined, description = undefined, code_link = undefined, images = undefined){
+    constructor(name, project_link, date = undefined, description = undefined, code_link = undefined, images = undefined, main_color = undefined){
         this.name = name
         this.date = date
         this.description = description
@@ -7,6 +7,26 @@ class Sketch{
         this.project_link =  project_link
         this.code_link = code_link
         this.images = images
+
+        this.main_color = main_color
+        if(main_color == undefined){
+            this.main_color = d3.select(':root', 'default-back')
+        }
+        
+        this.front_color = 'black'
+        function isColorDark(hex) {
+            hex = hex.replace("#", "");
+            const r = parseInt(hex.substring(0, 2), 16);
+            const g = parseInt(hex.substring(2, 4), 16);
+            const b = parseInt(hex.substring(4, 6), 16);
+    
+            const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+     
+            return luminance < 128;
+        }
+        if(isColorDark(main_color)){
+            this.front_color = 'white'
+        }
     }
 
 
@@ -30,7 +50,16 @@ class Sketch{
    
     //get an html of the project info
     appendBlurb(container){
-        const blurb = container.append('div').attr('class', 'project-blurb')
+         
+        container.on('mouseover', ()=>{
+            container.style('background-color', this.main_color).style('color', this.front_color)
+        }).on('mouseleave', ()=>{
+            container.style('background-color', 'inherit').style('color', 'black')
+
+        })
+        const blurb = container.append('div')
+                    .attr('class', 'project-blurb')
+                
         const title_container = blurb.append('div').attr('class', 'title_container row space-between')
         title_container.append('div').attr('class', 'title').text(this.name)
 
@@ -69,13 +98,8 @@ class Sketch{
               
                     preview_image.attr("img_idx", img_idx)
                     preview_image.attr('src', `./assets/sketch_images/${this.name}/${this.images[img_idx]}`)
-                })
-                
-                
-               
+                })       
             }
-           
-        
         }
 
         if(this.description != undefined){
@@ -94,6 +118,11 @@ class Sketch{
     }
 
     previewCard(container){
+        if(this.main_color !=undefined){
+            d3.select(':root').style('--current-back', this.main_color )
+            d3.select(':root').style('--current-front', this.front_color)
+        }
+       
         d3.select("body").style('overflow', 'hidden')
         const popup_container = container.append('div').attr('class', 'popup-container hide-scrollbar')
 
@@ -113,6 +142,8 @@ class Sketch{
         // close popup
         const close_btn = popup_container.append('div').text('x').attr('class', 'close-btn')
         close_btn.on('click', ()=>{
+            d3.select(':root').style('--current-back', d3.select(':root').style('--default-back') )
+            d3.select(':root').style('--current-front', 'black')
             d3.select("body").style('overflow', 'auto')
             popup_container.remove()
         })

@@ -1,13 +1,12 @@
 .popup-container{
     position:fixed;
-    z-index: 2;
+    z-index: 10;
   
-    background-color:#EFEBDF;
-    border: .5px solid black;
-    /* width: 100vw;
-    height: 100vh;
-    top: 0;
-    left:0; */
+    background-color: var(--current-back);
+    color: var(--current-front);
+
+    border: .5px solid var(--current-front);
+
     width: 96vw;
     height: 96vh;
     top: 2vh;
@@ -49,6 +48,7 @@
 
 .popup-container .title{
     font-size: 25px;
+    font-weight: 700;
      text-transform: uppercase;
      letter-spacing: 10px;;
 }
