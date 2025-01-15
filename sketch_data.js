@@ -59,3 +59,87 @@ const sketch_data = [
 
 
 ]
+
+
+const p5_sketch_data = [
+    new Sketch(
+            'Grey Day', 
+            project_link = 'https://sketches2024fall.compform.net/users/gzYCEcYkD5yuJdkjW',
+            date = 'December 2024',
+            description = undefined,
+            code_link = undefined,
+            images = ['grey day.gif'],
+      
+    ),
+    new Sketch(
+        'Ani Albers Study', 
+        project_link = 'https://sketches2024fall.compform.net/users/gzYCEcYkD5yuJdkjW',
+        date = 'December 2024',
+        description = undefined,
+        code_link = undefined,
+        images = ['1.png', "2.png", '3.png'],
+    
+    ),
+    new Sketch(
+        'Table of Tables', 
+        project_link = 'https://sketches2024fall.compform.net/users/gzYCEcYkD5yuJdkjW',
+        date = 'December 2024',
+        description = undefined,
+        code_link = undefined,
+        images = ['table of tables.gif'],
+       
+    ),
+
+    new Sketch(
+        'Glove guy', 
+        project_link = 'https://sketches2024fall.compform.net/users/gzYCEcYkD5yuJdkjW',
+        date = 'December 2024',
+        description = undefined,
+        code_link = undefined,
+        images = ['glove guy.gif'],
+       
+    ),
+    new Sketch(
+        'Wiggly Shapes', 
+        project_link ='https://sketches2024fall.compform.net/users/gzYCEcYkD5yuJdkjW',
+        date = 'December 2024',
+        description = undefined,
+        code_link = undefined,
+        images = ['shapes.gif'," wigglyfont.gif"],
+        
+    ),
+    new Sketch(
+        'Sound', 
+        project_link = 'https://sketches2024fall.compform.net/users/gzYCEcYkD5yuJdkjW',
+        date = 'December 2024',
+        description = undefined,
+        code_link = undefined,
+        images = ['piano.gif', 'abstract.gif'],
+        
+    ),new Sketch(
+        'Parameters', 
+        project_link = 'https://sketches2024fall.compform.net/users/gzYCEcYkD5yuJdkjW',
+        date = 'December 2024',
+        description = undefined,
+        code_link = undefined,
+        images = ['joystick.gif', 'wave.gif'],
+        
+    ),new Sketch(
+        'Cool Mouses', 
+        project_link = 'https://sketches2024fall.compform.net/users/gzYCEcYkD5yuJdkjW',
+        date = 'December 2024',
+        description = undefined,
+        code_link = undefined,
+        images = ['sootsprites.gif', 'svgmouse.gif'],
+       
+    ),
+
+
+
+
+
+
+
+
+
+]

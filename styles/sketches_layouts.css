@@ -16,6 +16,7 @@
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
+    overflow-y: hidden;
 
     width: 33.33%;
     aspect-ratio : 1 / 1;
@@ -27,7 +28,7 @@
 }
 
 /*mobile is bigger */
-@media (max-width: 850px){
+@media (max-width: 900px){
     .sketch-container{
         width: 50%;
     }

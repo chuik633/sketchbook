@@ -1,5 +1,5 @@
 class Sketch{
-    constructor(name, project_link, date = undefined, description = undefined, code_link = undefined, images = undefined, main_color = undefined){
+    constructor(name, project_link = undefined, date = undefined, description = undefined, code_link = undefined, images = undefined,  main_color = undefined,image_folder = './assets/sketch_images/'){
         this.name = name
         this.date = date
         this.description = description
@@ -7,10 +7,15 @@ class Sketch{
         this.project_link =  project_link
         this.code_link = code_link
         this.images = images
+        console.log(images)
+        this.image_folder = image_folder
+        
 
         this.main_color = main_color
         if(main_color == undefined){
-            this.main_color = d3.select(':root', 'default-back')
+            this.main_color = getComputedStyle(document.documentElement).getPropertyValue('--my-color').trim();
+        }else{
+            this.main_color = main_color
         }
         
         this.front_color = 'black'
@@ -24,7 +29,8 @@ class Sketch{
      
             return luminance < 128;
         }
-        if(isColorDark(main_color)){
+        // console.log(this.main_color)
+        if(isColorDark(this.main_color)){
             this.front_color = 'white'
         }
     }
@@ -49,14 +55,18 @@ class Sketch{
 
    
     //get an html of the project info
-    appendBlurb(container){
-         
-        container.on('mouseover', ()=>{
+    appendBlurb(container, popup = false){
+        if(this.main_color && !popup){
+             container.on('mouseover', ()=>{
             container.style('background-color', this.main_color).style('color', this.front_color)
-        }).on('mouseleave', ()=>{
-            container.style('background-color', 'inherit').style('color', 'black')
+            }).on('mouseleave', ()=>{
+                container.style('background-color', 'inherit').style('color', 'black')
 
-        })
+            })
+
+        }
+         
+       
         const blurb = container.append('div')
                     .attr('class', 'project-blurb')
                 
@@ -71,7 +81,7 @@ class Sketch{
        
         if(this.images){
             const preview_image = info_container.append('img').attr('class', 'preview-image')
-            preview_image.attr("src", `./assets/sketch_images/${this.name}/${this.images[0]}`)
+            preview_image.attr("src", `${this.image_folder}${this.name}/${this.images[0]}`)
             preview_image.attr("img_idx", 0).style('border', '1px solid black')
             //clicking image to open it
             preview_image.on('mouseover', ()=>preview_image.style('border', '2px solid black'))
@@ -91,13 +101,13 @@ class Sketch{
                 increase.on('click', ()=>{  
                     img_idx = (preview_image.attr("img_idx") + 1)%(this.images.length)
                     preview_image.attr("img_idx", img_idx)
-                    preview_image.attr('src', `./assets/sketch_images/${this.name}/${this.images[img_idx]}`)
+                    preview_image.attr('src', `${this.image_folder}${this.name}/${this.images[img_idx]}`)
                 })
                 decrease.on('click', ()=>{  
                     img_idx = (preview_image.attr("img_idx") - 1 + this.images.length)%(this.images.length)
               
                     preview_image.attr("img_idx", img_idx)
-                    preview_image.attr('src', `./assets/sketch_images/${this.name}/${this.images[img_idx]}`)
+                    preview_image.attr('src', `${this.image_folder}${this.name}/${this.images[img_idx]}`)
                 })       
             }
         }
@@ -124,16 +134,16 @@ class Sketch{
         }
        
         d3.select("body").style('overflow', 'hidden')
-        const popup_container = container.append('div').attr('class', 'popup-container hide-scrollbar')
+        const popup_container = d3.select("#app").append('div').attr('class', 'popup-container hide-scrollbar')
 
         //popup content
         const header = popup_container.append('div').attr('class', 'row space-between med-gap')
-        this.appendBlurb(header)
+        this.appendBlurb(header, true)
         const images_container = header.append('div').attr('class', 'preview_images')
         for(const image_link of this.images){
             images_container.append('img')
                         .attr('class', 'preview-image')
-                        .attr("src", `./assets/sketch_images/${this.name}/${image_link}`)
+                        .attr("src", `${this.image_folder}${this.name}/${image_link}`)
         }
         this.appendPreview(popup_container)
 
