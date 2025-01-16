@@ -9,6 +9,8 @@
     font-weight:100;
     outline: none !important;
    position: relative;
+   scrollbar-width: none; /* Firefox */
+   -ms-overflow-style: none; /* Internet Explorer 10+ */
    
 
 

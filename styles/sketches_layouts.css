@@ -7,11 +7,13 @@
     gap: 0px;
     align-items: center;
     padding: 30px;
-    /* background-color: pink; */
+    padding-bottom: 100px;
+
+
 
 }
 
-/* Determines the size of each sketch */
+
 .sketch-container{
     flex-shrink: 0;
     display: flex;
@@ -20,12 +22,17 @@
 
     width: 33.33%;
     aspect-ratio : 1 / 1;
+   
 
     border: .02px solid black;
     padding: 50px;
     transition: background-color 0.2s ease;
 
+    
+
 }
+
+
 
 /*mobile is bigger */
 @media (max-width: 900px){

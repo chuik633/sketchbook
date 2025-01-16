@@ -1,0 +1,139 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  /* background-color: #FCFBE9; */
+}
+
+canvas {
+  display: block;
+}
+
+button{
+  font-family: 'Courier New';
+  background-color: #FCFBE9;
+  border: 1px solid black;
+  margin: 10px;
+  font-size: 10px;
+  width: fit-content;
+  padding:10px 20px;
+  height: fit-content;
+  border-radius: 3px;
+}
+
+button:hover{
+  color: #FCFBE9;
+  background-color: black;
+}
+
+h1{
+  color: #383838;
+  font-family: 'Courier New';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing:8px;
+  position: absolute;
+  width: 500px;
+  align-items: center;
+  text-align: center;
+  top: 70px;
+}
+
+h1 b{
+  color: #b3b3b3;
+  font-weight: 50;
+  font-style: italic;
+}
+
+.sender-info{
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  top: 140px;
+}
+
+.sender-info h3{
+  color: #444444;
+  text-align: center;
+  font-family: Futura PT;
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 128.86%; /* 10.309px */
+  letter-spacing: 2.32px;
+  width: 500px;
+  margin: 0px;
+}
+
+.bottom-info{
+  display: flex;
+  flex-direction: row;
+  width: 500px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 3;
+  top: 600px;
+  gap: 10px;
+  /* background-color: pink; */
+}
+
+.bottom-info h3{
+  color: #4b4b4b;
+  font-family: "Futura PT";
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 2.32px;
+  
+}
+#start_svg{
+  stroke-width: 0.5px;
+}
+#start_svg:hover{
+  stroke-width: 1.2px;
+}
+#start_svg:active{
+  stroke-width: 2px;
+}
+
+.tooltip{
+  position: absolute;
+  top: 630px;
+  left: 230px;
+  animation: blink-animation .5s steps(5, start) infinite;
+}
+
+.spacer{
+  width: 40px;
+  height: 40px;
+}
+
+
+.letters{
+  position: absolute;
+  display:flex;
+  flex-direction: column;
+  top: 200px;
+  height: 350px;
+  justify-content:space-between
+}
+
+.letters.left{
+  left: 80px;
+}
+
+.letters.right{
+  left: 400px;
+}
+
+.letters div{
+  font-family: Futura PT;
+  font-size: 5px;
+  text-align: center;
+}

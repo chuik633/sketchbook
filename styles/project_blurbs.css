@@ -52,19 +52,33 @@ iframe{
 
 .image-controls{
     /* position: absolute; */
-    top: 40%;
-    font-size:8px;
     position:absolute;
+    top: 40%;
+    /* left: 50%; */
+    font-size:8px;
+    
+    /* background-color: pink; */
    
-    /* width: fit-content; */
-    left: -17px;
-    width: calc(100% + 34px);
+   padding: 0px 20px;
+    align-self:center ;
+
+    width: calc(100%);
+    z-index: 5;
 }
 
 .image-control{
     padding: 5px;
     background-color: inherit;
     color: black;
+    /* background-color: red; */
+    width: 10px;
+    height: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding-top: 7px;
+    justify-content: center;
+    
 
     font-weight: 300;
     flex-basis: 0;
@@ -73,7 +87,7 @@ iframe{
 .image-control:hover{
     border: .5px solid black;
     color: black;
-    width: fit-content;
+
     font-weight: 800;
 }
 
@@ -81,6 +95,6 @@ iframe{
     border: .5px solid black;
     color: white;
     background-color: black;
-    width: fit-content;
+
     font-weight: 800;
 }

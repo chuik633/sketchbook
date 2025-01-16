@@ -87,11 +87,11 @@ class Sketch{
             preview_image.on('mouseover', ()=>preview_image.style('border', '2px solid black'))
             preview_image.on('mouseleave', ()=>preview_image.style('border', '1px solid black'))
             preview_image.on('click', ()=>{  
-                this.previewCard(container)
+                this.previewCard()
                 // window.open(this.project_link, '_blank');
             })
             if(this.images.length>1){
-                const image_controls = blurb.append('div').attr('class', 'row image-controls space-between')
+                const image_controls = container.append('div').attr('class', 'row image-controls space-between')
                 
                 const decrease = image_controls.append('div').attr('class', 'image-control').text('<')
                 const increase = image_controls.append('div').attr('class', 'image-control').text('>')
@@ -127,7 +127,7 @@ class Sketch{
         
     }
 
-    previewCard(container){
+    previewCard(){
         if(this.main_color !=undefined){
             d3.select(':root').style('--current-back', this.main_color )
             d3.select(':root').style('--current-front', this.front_color)
@@ -145,7 +145,13 @@ class Sketch{
                         .attr('class', 'preview-image')
                         .attr("src", `${this.image_folder}${this.name}/${image_link}`)
         }
-        this.appendPreview(popup_container)
+
+        if(this.project_link){
+            this.appendPreview(popup_container)
+        }
+        if(this.code_link.includes('codeFiles')){
+            this.loadSketch(popup_container)
+        }
 
 
 
@@ -161,6 +167,16 @@ class Sketch{
        
 
     }
+
+    loadSketch(container){
+  
+        container.append('iframe')
+            .attr('src', this.code_link)
+            .style('width', '100%')
+            .style('min-height', '300px')
+    }
+
+
 
  
 

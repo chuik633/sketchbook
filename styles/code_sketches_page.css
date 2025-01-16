@@ -1,3 +1,21 @@
-.code-sketches-page{
-    
+
+.code-sketches-page .grid.sketches-layout{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: masonry;
+}
+.code-sketches-page .date{
+    display: none;
+}
+.code-sketches-page .sketch-container{
+    width: 100%;
+    aspect-ratio: inherit;
+    height: 100%;
+    /* background-color: pink; */
+}
+
+.code-sketches-page .preview-image{
+    height: 100%;
+    width: auto;
+    object-fit:contain;
 }
