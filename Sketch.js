@@ -1,5 +1,5 @@
 class Sketch{
-    constructor(name, project_link = undefined, date = undefined, description = undefined, code_link = undefined, images = undefined,  main_color = undefined,image_folder = './assets/sketch_images/'){
+    constructor(name, project_link = undefined, date = undefined, description = undefined, code_link = undefined, images = undefined,  main_color = undefined,image_folder = './assets/sketch_images/', show_code = false){
         this.name = name
         this.date = date
         this.description = description
@@ -9,6 +9,7 @@ class Sketch{
         this.images = images
         console.log(images)
         this.image_folder = image_folder
+        this.show_code = show_code
         
 
         this.main_color = main_color
@@ -140,17 +141,35 @@ class Sketch{
         const header = popup_container.append('div').attr('class', 'row space-between med-gap')
         this.appendBlurb(header, true)
         const images_container = header.append('div').attr('class', 'preview_images')
+        let img_num = 0
+        let multiple_code_links=Array.isArray(this.code_link)
         for(const image_link of this.images){
-            images_container.append('img')
+            let img = images_container.append('img')
                         .attr('class', 'preview-image')
+                        .attr('img_num', img_num)
+                        .attr('id', `preview-image-${this.name}-${img_num}`)
                         .attr("src", `${this.image_folder}${this.name}/${image_link}`)
+            
+            if(multiple_code_links){
+                img.on('mouseover', ()=>img.style('border', '2px solid black'))
+                img.on('mouseleave', ()=>img.style('border', '.1px solid black'))
+                img.on('click', ()=>{
+                    console.log(this.code_link,img.attr('img_num'),this.code_link.length)
+                    popup_container.selectAll('.code-preview').remove()
+                    this.loadSketch(popup_container,this.code_link[img.attr('img_num')])
+                })
+            }
+            console.log("img num", img_num)
+            img_num = img_num +1;
         }
 
         if(this.project_link){
             this.appendPreview(popup_container)
         }
         if(this.code_link.includes('codeFiles')){
-            this.loadSketch(popup_container)
+            this.loadSketch(popup_container, this.code_link)
+        }else if( multiple_code_links){
+            this.loadSketch(popup_container,this.code_link[0])
         }
 
 
@@ -168,12 +187,31 @@ class Sketch{
 
     }
 
-    loadSketch(container){
-  
-        container.append('iframe')
-            .attr('src', this.code_link)
-            .style('width', '100%')
-            .style('min-height', '300px')
+    loadSketch(container, codeSrc){
+        const code_container = container.append('div').attr('class', 'row code-preview')
+        if(this.show_code){
+            code_container.append("p").text(`hello the code goes here`).attr('width', '300px')
+
+        }
+        
+        const iframe = code_container.append('iframe')
+            .attr('src', codeSrc)
+            .style('width', 'fit-content')
+            .style('min-width', '500px')
+            // .attr('scrolling', 'no')
+            .style('height', 'fit-content')
+            .style('min-height', '500px')
+            .style('flex-shrink', 0)
+
+        iframe.on("load", function() {
+            resizeIframe(iframe)
+            // const iframeDoc = this.contentDocument || this.contentWindow.document;
+        
+
+            // const contentHeight = iframeDoc.documentElement.scrollHeight;
+            // d3.select(this)
+            //     .style("height", contentHeight + "px");
+            });
     }
 
 
@@ -183,4 +221,34 @@ class Sketch{
 
 
 
+}
+
+function resizeIframe(iframe) {
+    // Get the iframe's content dimensions
+    const iframeDoc = iframe.node().contentDocument || iframe.node().contentWindow.document;
+    const contentWidth = iframeDoc.documentElement.scrollWidth;
+    const contentHeight = iframeDoc.documentElement.scrollHeight;
+
+    // Get the iframe's container dimensions (assuming the iframe is inside a flex container)
+    const container = iframe.node().parentElement; // or you can specify a container selector
+    const containerWidth = container.offsetWidth;
+    const containerHeight = container.offsetHeight;
+
+    // Calculate the scaling factor based on content overflow relative to container
+    const scaleWidth = containerWidth / contentWidth;
+    const scaleHeight = containerHeight / contentHeight;
+
+    // Choose the smallest scaling factor to fit both width and height
+    console.log('container dimensions', containerWidth, containerHeight)
+    console.log('sketch dimensions', contentWidth, contentHeight)
+    console.log("scale", scaleWidth, scaleHeight)
+    const scale = Math.min(scaleWidth, scaleHeight, 1);
+    console.log('scalingi by', scale)
+
+    // Apply the scale to the iframe
+    iframe.style("transform", `scale(${scale})`).style("height", contentHeight + "px");
+
+    console.log("TOP SCALE", (containerHeight - contentHeight) / 2)
+    console.log("SIDE SCALE", (containerWidth - contentWidth) / 2)
+    iframe.style("top", (containerHeight - contentHeight) / 2 + "px");
 }

@@ -39,6 +39,7 @@ let paperTextureImg;
 
 //save the face data
 let face_data = {}
+const aspect = 9/6
 const width = 900
 const height = 600
 const midWidth = width*2/3

@@ -67,8 +67,11 @@ const p5_sketch_data = [
             project_link = undefined,
             date = '2024',
             description = undefined,
-            code_link = undefined,
+            code_link = './codeFiles/greyDay/index.html',
             images = ['grey day.gif'],
+            main_color = undefined,
+        image_folder = './assets/sketch_images/',
+        show_code = true
       
     ),
     new Sketch(
@@ -76,8 +79,11 @@ const p5_sketch_data = [
         project_link =undefined,
         date = '2024',
         description = undefined,
-        code_link = undefined,
+        code_link = ['./codeFiles/wigglyShapes/index.html', './codeFiles/wigglyFont/index.html',],
         images = ['shapes.gif',"wigglyfont.gif"],
+        main_color = undefined,
+        image_folder = './assets/sketch_images/',
+        show_code = true
         
     ),
     
@@ -86,8 +92,11 @@ const p5_sketch_data = [
         project_link = undefined,
         date = '2024',
         description = undefined,
-        code_link = undefined,
+        code_link = './codeFiles/tables/index.html',
         images = ['table of tables.gif'],
+        main_color = undefined,
+        image_folder = './assets/sketch_images/',
+        show_code = true
        
     ),
 
@@ -98,6 +107,9 @@ const p5_sketch_data = [
         description = undefined,
         code_link = './codeFiles/gloveGuy/index.html',
         images = ['glove guy.gif'],
+        main_color = undefined,
+        image_folder = './assets/sketch_images/',
+        show_code = false
        
     )
     
@@ -106,16 +118,22 @@ const p5_sketch_data = [
         project_link = undefined,
         date = '2024',
         description = undefined,
-        code_link = './codeFiles/gloveGuy/index.html',
+        code_link = ['./codeFiles/joystick/index.html', './codeFiles/wave/index.html',],
         images = ['joystick.gif', 'wave.gif'],
+        main_color = undefined,
+        image_folder = './assets/sketch_images/',
+        show_code = true
         
     ),new Sketch(
         'Cool Mouses', 
         project_link = undefined,
         date = '2024',
         description = undefined,
-        code_link = undefined,
+        code_link = './codeFiles/soots/index.html',
         images = ['sootsprites.gif', 'svgmouse.gif'],
+        main_color = undefined,
+        image_folder = './assets/sketch_images/',
+        show_code = false
        
     ),
     new Sketch(
@@ -123,16 +141,22 @@ const p5_sketch_data = [
         project_link = undefined,
         date = '2024',
         description = undefined,
-        code_link = undefined,
+        code_link = './codeFiles/anni albers study/index.html',
         images = ['1.png', "2.png", '3.png'],
+        main_color = undefined,
+        image_folder = './assets/sketch_images/',
+        show_code = true
     
     ), new Sketch(
         'Sound', 
         project_link = undefined,
         date = '2024',
         description = undefined,
-        code_link = undefined,
+        code_link = ['./codeFiles/sounds/piano.html', './codeFiles/sounds/abstrac.html'],
         images = ['piano.gif', 'abstract.gif'],
+        main_color = undefined,
+        image_folder = './assets/sketch_images/',
+        show_code = true
         
     )
 

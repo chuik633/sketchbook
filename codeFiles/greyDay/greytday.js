@@ -2,7 +2,7 @@ let osc;
 let fft;
 
 const width = 500
-const height = 750
+const height = 500
 const innerWidth = 250
 const innerHeight = 350
 
