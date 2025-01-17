@@ -6,10 +6,24 @@ class Sketch{
 
         this.project_link =  project_link
         this.code_link = code_link
-        this.images = images
-        console.log(images)
-        this.image_folder = image_folder
         this.show_code = show_code
+        if(this.code_link && show_code ){
+            if(Array.isArray(this.code_link )){
+                 this.code_folder = code_link[0].substring(0, code_link.lastIndexOf('/'));
+                this.code_script = this.code_folder + '/sketch.js'
+            }else{
+                 this.code_folder = code_link.substring(0, code_link.lastIndexOf('/'));
+                this.code_script = this.code_folder + '/sketch.js'
+                console.log('this.code_script', this.code_script)
+            }
+           
+
+        }
+        
+        this.images = images
+
+        this.image_folder = image_folder
+        
         
 
         this.main_color = main_color
@@ -187,16 +201,20 @@ class Sketch{
 
     }
 
-    loadSketch(container, codeSrc){
+    async loadSketch(container, codeSrc){
         const code_container = container.append('div').attr('class', 'row code-preview')
         if(this.show_code){
-            code_container.append("p").text(`hello the code goes here`).attr('width', '300px')
+            const code_text = await this.getScriptSrc()
+            console.log("GOT CODE TEXT")
+            code_container.append("p").text(code_text).style('width', '300px')
 
         }
+        const iframe_container = code_container.append('div').style('width', "100%").style('height', "100%")
         
-        const iframe = code_container.append('iframe')
+        const iframe = iframe_container.append('iframe')
             .attr('src', codeSrc)
-            .style('width', 'fit-content')
+            // .style('width', '100%')
+            .style('width', '100%')
             .style('min-width', '500px')
             // .attr('scrolling', 'no')
             .style('height', 'fit-content')
@@ -214,13 +232,19 @@ class Sketch{
             });
     }
 
-
-
- 
-
-
-
-
+    async getScriptSrc() {
+        try {
+            const response = await fetch(this.code_script);  // Await the response
+            const jsCode = await response.text();  // Await the text content of the JS file
+            console.log("JS CODE obtained");
+            const formatted_code = jsCode.replace(/\n/g, '\n');
+            // console.log(formatted_code)
+            return  formatted_code// Return the code once it's ready
+        } catch (error) {
+            console.error("Error fetching JS code:", error);
+            return '';  // Return an empty string in case of error
+        }
+    }
 }
 
 function resizeIframe(iframe) {
@@ -243,7 +267,7 @@ function resizeIframe(iframe) {
     console.log('sketch dimensions', contentWidth, contentHeight)
     console.log("scale", scaleWidth, scaleHeight)
     const scale = Math.min(scaleWidth, scaleHeight, 1);
-    console.log('scalingi by', scale)
+    // console.log('scalingi by', scale)
 
     // Apply the scale to the iframe
     iframe.style("transform", `scale(${scale})`).style("height", contentHeight + "px");

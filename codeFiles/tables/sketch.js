@@ -104,25 +104,37 @@ function draw_table(x0,y0, length, width, height, thickness, colorIdx){
 }
 
 
-var gap = 150
-var cellW = 50
-var cellH = 50
-for(var i = 0; i < 5; i++){
-    for (var j = 0; j < 5 ; j++){
-        var colorIdx = Math.floor(Math.random() * 5);
-        var table_H = Math.random()*cellH
 
-        draw_table(
-            100 + (cellW + gap)*j, //x 
-            200 + (cellH + gap)*i, //y
-            Math.random()*cellW, //length
-            Math.random()*cellW, //width
-            table_H,
-            Math.random()*10,
-            colorIdx
+function display_tables(){
 
-        )
+    var gap = 150
+    var cellW = 40
+    var cellH = 40
+    for(var i = 0; i < 8; i++){
+        for (var j = 0; j < 5 ; j++){
+            var colorIdx = Math.floor(Math.random() * 5);
+            var table_H = Math.random()*cellH
 
+            draw_table(
+                100 + (cellW + gap)*j, //x 
+                150 + (cellH + gap)*i, //y
+                Math.random()*cellW, //length
+                Math.random()*cellW, //width
+                table_H,
+                Math.random()*10,
+                colorIdx
+
+            )
+
+        }
     }
+
 }
+paper.setup('myCanvas');
+display_tables();
+
+document.getElementById('refresh').addEventListener('click', function() {
+    paper.project.clear();
+    display_tables();
+});
 

@@ -16,7 +16,29 @@ body {
     top: 0px;
 
 }
-
+button{
+    position: fixed;
+    z-index: 10;
+    top: 0px;
+    right: 0px;
+}
+button{
+    font-family: 'Courier New';
+    background-color: #E7E2DF;
+    border: 1px solid black;
+    margin: 10px;
+    font-size: 10px;
+    width: fit-content;
+    padding:10px 20px;
+    height: fit-content;
+    border-radius: 3px;
+  }
+  
+  button:hover{
+    color: #E7E2DF;
+    background-color: black;
+  }
+  
 /* Scale canvas with resize attribute to full size */
 canvas[resize] {
     width: 100%;
@@ -28,8 +50,8 @@ h1{
     z-index: 3;
     color: #000;
     font-family: "Futura PT";
-    top: 80px;
-    font-size: 18px;
+    top: 50px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
