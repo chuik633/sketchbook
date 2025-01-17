@@ -23,9 +23,14 @@
 .close-btn{
     font-family: Futura;
     font-weight: 100;
-    position:absolute;
-    top: 5px;
-    left: 94vw;
+    position:fixed;
+    top: 17px;
+    right: 15px;
+    width: 20px;
+    height:20px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
 
 }
 .popup-container .project-blurb {

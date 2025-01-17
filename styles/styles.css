@@ -48,13 +48,25 @@
 /*mobile is bigger */
 @media (max-width: 900px){
     .page{
-padding: 80px;
+
+    padding: 80px;
+    padding-top: 100px;
     }
+   
 }
 
 @media (max-width: 600px){
     .page{
         padding: 10px;
+        padding-top: 100px;
+    }
+    .code-preview{
+        flex-direction:column-reverse !important;
+        height: 100% !important;
+    }
+    .code-preview p{
+        height: 200px !important;
+        overflow-x:hidden;
     }
 }
 
