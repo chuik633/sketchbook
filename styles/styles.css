@@ -25,7 +25,7 @@
 #app{
    
     background-color:var(--current-back);
-    padding: 20px;
+    /* padding: 20px; */
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -45,6 +45,19 @@
     padding:100px;
     
 }
+/*mobile is bigger */
+@media (max-width: 900px){
+    .page{
+padding: 80px;
+    }
+}
+
+@media (max-width: 600px){
+    .page{
+        padding: 10px;
+    }
+}
+
 .header{
     background-color: var(--current-back);
     align-items: center;
