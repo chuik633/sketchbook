@@ -26,7 +26,7 @@ let play_button;
 let noteToIndices;
 
 function preload() {
-  mySound = loadSound("sounds/Kaleidoscope.mp3");
+  mySound = loadSound("sounds/nothingnew.mp3");
   texture = loadImage("textture.jpg")
 }
 
@@ -48,7 +48,7 @@ function setup() {
 
   fft = new p5.FFT();
   noteToIndices= noteToSpectrumMapping()
-  console.log(noteToIndices)
+  //console.log(noteToIndices)
 }
 
 function play(){
@@ -58,7 +58,7 @@ function play(){
 
   }else{
     playing = true
-    mySound.play(0, 1, 1, 0, 100);
+    mySound.play(0, 1, 1,0,100);
   }
 }
 
@@ -90,7 +90,7 @@ function draw() {
     amp_avg = amp_avg/indices.length
     let noteName = noteOctaveName.slice(0,noteOctaveName.length-1)
     let octave = parseInt(noteOctaveName.slice(noteOctaveName.length-1))
-    // console.log(noteName, octave, amp_avg)
+    // //console.log(noteName, octave, amp_avg)
     layOutDude(noteName, octave, amp_avg)
     alterNote(noteName, freq,  amp_avg)
   }
@@ -131,7 +131,7 @@ function layOutDude(noteName, octave, amplitude){
   if(dudeHeight < 20){
     dudeHeight = 20
   }
-  // console.log("drawing a dude:", noteName,note_idx,  octave)
+  // //console.log("drawing a dude:", noteName,note_idx,  octave)
   fill(fill_color)
   drawDude(dudeHeight, x, y)
   

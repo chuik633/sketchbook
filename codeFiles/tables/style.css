@@ -4,6 +4,7 @@
 html,
 body {
     height: 100%;
+    width: 100%;
     background-color: #E7E2DF;
     
 }
@@ -51,7 +52,10 @@ h1{
     color: #000;
     font-family: "Futura PT";
     top: 50px;
-    font-size: 15px;
+    width: 100%;
+    /* background-color: pink; */
+    font-size: 10px;
+    text-align: center;
     font-style: normal;
     font-weight: 300;
     line-height: normal;

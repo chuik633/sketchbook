@@ -39,7 +39,7 @@ function drawJoystick(angle){
 
 function drawDot(){
   fill("black")
-  console.log(dotX)
+  //console.log(dotX)
   if(dotX > 100 - 10){
     direction = -1
   }else if(dotX<-100+10){

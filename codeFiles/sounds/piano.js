@@ -27,7 +27,7 @@ function preload() {
 function setup() {
   createCanvas(width, height);
   createPianoCoords()
-  console.log(pianoNotesToCoords)
+  //console.log(pianoNotesToCoords)
   p5grain.setup();
   p5grain.setup({
     ignoreWarnings: true,
@@ -93,7 +93,7 @@ function draw() {
     let noteName = freqToNoteName(freq);
 
     let transformed_amp = transformed_spectrum[i]
-    // console.log("NORMAL:", amplitude, "TRANSFORMED", transformed_amp)
+    // //console.log("NORMAL:", amplitude, "TRANSFORMED", transformed_amp)
     
    
     let noteCoords = pianoNotesToCoords[noteName]
@@ -124,7 +124,7 @@ function draw() {
 
 
   }
-  // console.log(pressedNotes)
+  // //console.log(pressedNotes)
   drawPiano(pressedNotes)
   applyMonochromaticGrain(10);
   applyChromaticGrain(10)

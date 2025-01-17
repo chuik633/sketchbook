@@ -116,7 +116,7 @@ function createButtons(mouseX, mouseY){
         if(feature_name == 'legs'){
           const leg_img = face_data[feature_name][colIdx-1]
           const leg_height = aspectHeight(leg_img, image_positions['legs']['width'])
-          // console.log('leg_height', leg_height)
+          // //console.log('leg_height', leg_height)
           image_positions['shoes']['shift'] = leg_height + 150
         }
       }

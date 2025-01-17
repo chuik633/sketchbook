@@ -56,7 +56,8 @@ class Sketch{
         const preview = container.append('div')
                 .style('position', 'relative')
                 .style('width', '100%')
-                .style('height', '0')
+                .style('height', 'auto')
+                // .style('background', 'pink')
                 .style('padding-top',`${aspectRatio*100}%`); 
         const iframe = preview.append('iframe')
                 .attr('src', this.project_link)
@@ -206,30 +207,29 @@ class Sketch{
         if(this.show_code){
             const code_text = await this.getScriptSrc()
             console.log("GOT CODE TEXT")
-            code_container.append("p").text(code_text).style('width', '300px')
+            code_container.append("p").text(code_text)
 
         }
-        const iframe_container = code_container.append('div').style('width', "100%").style('height', "100%")
+        const iframe_container = code_container.append('div').style('width', "100%").style('height', "65vh").attr('class', 'iframe-container').style('display', 'flex')
+        .style('justify-content', 'center')
+        .style('align-items', 'flex-start')
         
         const iframe = iframe_container.append('iframe')
             .attr('src', codeSrc)
             // .style('width', '100%')
             .style('width', '100%')
             .style('min-width', '500px')
-            // .attr('scrolling', 'no')
+            .attr('scrolling', 'no')
             .style('height', 'fit-content')
             .style('min-height', '500px')
             .style('flex-shrink', 0)
+            
+    
 
-        iframe.on("load", function() {
+       
             resizeIframe(iframe)
-            // const iframeDoc = this.contentDocument || this.contentWindow.document;
         
 
-            // const contentHeight = iframeDoc.documentElement.scrollHeight;
-            // d3.select(this)
-            //     .style("height", contentHeight + "px");
-            });
     }
 
     async getScriptSrc() {
@@ -246,33 +246,100 @@ class Sketch{
         }
     }
 }
-
 function resizeIframe(iframe) {
-    // Get the iframe's content dimensions
-    const iframeDoc = iframe.node().contentDocument || iframe.node().contentWindow.document;
-    const contentWidth = iframeDoc.documentElement.scrollWidth;
-    const contentHeight = iframeDoc.documentElement.scrollHeight;
+    // Wait for the iframe content to load
+    iframe.node().addEventListener('load', function() {
+        // Get the iframe's content document
+        const iframeDoc = iframe.node().contentDocument || iframe.node().contentWindow.document;
 
-    // Get the iframe's container dimensions (assuming the iframe is inside a flex container)
-    const container = iframe.node().parentElement; // or you can specify a container selector
-    const containerWidth = container.offsetWidth;
-    const containerHeight = container.offsetHeight;
+        // Ensure that content is fully loaded
+        const iframeBody = iframeDoc.body;
+        console.log(iframeBody)
 
-    // Calculate the scaling factor based on content overflow relative to container
-    const scaleWidth = containerWidth / contentWidth;
-    const scaleHeight = containerHeight / contentHeight;
+        // Get content dimensions (body's width and height)
+        const contentWidth = iframeBody.scrollWidth;
+        const contentHeight = iframeBody.scrollHeight;
 
-    // Choose the smallest scaling factor to fit both width and height
-    console.log('container dimensions', containerWidth, containerHeight)
-    console.log('sketch dimensions', contentWidth, contentHeight)
-    console.log("scale", scaleWidth, scaleHeight)
-    const scale = Math.min(scaleWidth, scaleHeight, 1);
-    // console.log('scalingi by', scale)
+        // Get the container dimensions
+        const container = iframe.node().parentElement;
+        const containerWidth = container.offsetWidth;
+        const containerHeight = container.offsetHeight;
 
-    // Apply the scale to the iframe
-    iframe.style("transform", `scale(${scale})`).style("height", contentHeight + "px");
+        // Calculate the scaling factor based on content vs container size
+        const scaleWidth = containerWidth / contentWidth;
+        const scaleHeight = containerHeight / contentHeight;
 
-    console.log("TOP SCALE", (containerHeight - contentHeight) / 2)
-    console.log("SIDE SCALE", (containerWidth - contentWidth) / 2)
-    iframe.style("top", (containerHeight - contentHeight) / 2 + "px");
+        // Use the smaller scale factor to ensure content fits both width and height
+        const scale = Math.min(scaleWidth, scaleHeight, 1); // Don't scale larger than the content
+        if(scale == 1){
+            return
+        }
+        console.log('Container dimensions:', containerWidth, containerHeight);
+        console.log('Content dimensions:', contentWidth, contentHeight);
+        console.log('Scaling factor:', scale);
+        const scaledWidth = contentWidth * scale;  // Apply scale to content width
+        const scaledHeight = contentHeight * scale;  // Apply scale to content height
+        console.log('Scaled dimensions:', scaledWidth, scaledHeight);
+
+
+
+        // Apply scaling to the iframe
+        iframe.style("transform", `scale(${scale})`)
+            .style("width", `${contentWidth}px`)  // Set the iframe width based on the content size
+            .style("height", `${contentHeight}px`); // Set the iframe height based on the content size
+
+        // Optional: Center the iframe in the container
+        iframe.style("top", `${(containerHeight - contentHeight) / 2}px`);
+        // iframe.style("left", `${-(containerWidth - scaledWidth) / 2}px`);
+
+  
+        d3.select(container).style('width',scaledWidth+"px")
+    });
 }
+
+// function resizeIframe(iframe) {
+//     // Get the iframe's content dimensions
+//     const iframeDoc = iframe.node().contentDocument || iframe.node().contentWindow.document;
+//     const canvas = iframe.select("canvas");
+  
+
+//     const contentWidth = iframeDoc.documentElement.scrollWidth;
+//     const contentHeight = iframeDoc.documentElement.scrollHeight;
+
+//     // Get the iframe's container dimensions (assuming the iframe is inside a flex container)
+//     const container = iframe.node().parentElement; // or you can specify a container selector
+//     const containerWidth = container.offsetWidth;
+//     const containerHeight = container.offsetHeight;
+
+//     // Calculate the scaling factor based on content overflow relative to container
+//     const scaleWidth = containerWidth / contentWidth;
+//     const scaleHeight = containerHeight / contentHeight;
+
+//     // Choose the smallest scaling factor to fit both width and height
+//     console.log('container dimensions', containerWidth, containerHeight)
+//     console.log('sketch dimensions', contentWidth, contentHeight)
+//     // console.log('sketch dimensions',canvasWidth, canvasHeight)
+//     console.log("scale", scaleWidth, scaleHeight)
+//     const scale = Math.min(scaleWidth, scaleHeight, 1);
+//     console.log('scalingi by', scale)
+
+//     // Apply the scale to the iframe
+//     if(scale != 1){
+//         const scaledWidth = contentWidth * scale; // Scaled width
+//         const scaledHeight = contentHeight * scale; // Scaled height
+//         iframe.style("transform", `scale(${scale})`).style("height", contentHeight + "px").style("width", contentWidth + "px");
+
+//         console.log("TOP SCALE", (containerHeight - contentHeight) / 2)
+//         iframe.style("top", (containerHeight - contentHeight) / 2 + "px");
+//         iframe.style("left", (containerWidth - scaledWidth) / 2 + "px");
+
+//         console.log(scale, contentHeight)
+       
+
+//         console.log('scaled widh/height:', scaledWidth, scaledHeight)
+//         // container.style("width", `${scaledWidth}px`);
+//         container.style("height", `${scaledHeight}px`);
+
+//     }
+    
+// }

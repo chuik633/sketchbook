@@ -128,7 +128,7 @@ function freqToNoteName(freq) {
 
 
 function mousePressed(){
-  console.log("mouse pressed")
+  //console.log("mouse pressed")
   for(const object of Object.keys(objectData)){
     objectClickHandler(object, mouseX, mouseY)
   }
@@ -168,8 +168,8 @@ function objectHoverHandler(object, xPos, yPos){
 }
 function objectClickHandler(object, xPos, yPos){
   if(checkObjectBounds(object, xPos, yPos)){
-    console.log("object clicked")
-    console.log(objectData[object])
+    //console.log("object clicked")
+    //console.log(objectData[object])
     if (objectData[object].playing){ //stop sound
       objectData[object].playing = false
       objectData[object].sound.stop()

@@ -98,6 +98,18 @@ const p5_sketch_data = [
         show_code = true
         
     ),
+    new Sketch(
+        'Kitchen Sounds', 
+        project_link =undefined,
+        date = '2024',
+        description = 'Turn on your volume and click on objects.',
+        code_link =  './codeFiles/kitchen/index.html',
+        images = ["kitchen.gif"],
+        main_color = '#CB421D',
+        image_folder = './assets/sketch_images/',
+        show_code = true
+        
+    ),
     
     
     new Sketch(

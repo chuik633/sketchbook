@@ -22,15 +22,15 @@ function setup() {
   
 
   let x = padding;
-  // console.log(gridWidth, gridHeight)
+  // //console.log(gridWidth, gridHeight)
   fill(background_color)
   rect(padding, padding, gridWidth, gridHeight)
   while(x < gridWidth) {
-    console.log("NEW ROW")
+    //console.log("NEW ROW")
     const cellWidth = lowBiasRandom(10, gridWidth - x)
     // const cellWidth = 40
     
-    // console.log("x outise = ", x)
+    // //console.log("x outise = ", x)
     let y = padding;
       
     while(y<gridHeight) {
@@ -45,9 +45,9 @@ function setup() {
     }
     x = x+ cellWidth
    
-    // console.log("x = ", x)
+    // //console.log("x = ", x)
   }
-  // console.log("x = ", x)
+  // //console.log("x = ", x)
 }
 
 function lowBiasRandom(low, high){

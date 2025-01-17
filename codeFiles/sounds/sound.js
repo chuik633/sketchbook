@@ -27,7 +27,7 @@ function preload() {
 function setup() {
   createCanvas(width, height);
   createPianoCoords()
-  console.log(pianoNotesToCoords)
+  //console.log(pianoNotesToCoords)
   p5grain.setup();
   p5grain.setup({
     ignoreWarnings: true,

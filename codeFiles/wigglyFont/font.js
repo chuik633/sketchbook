@@ -49,7 +49,7 @@ function draw(){
 function keyPressed(){
     if(keyCode == ENTER){
         inputText = inputField.value()
-        console.log(Math.round(windowWidth/inputText.length))
+        //console.log(Math.round(windowWidth/inputText.length))
         resetSliderMax(Math.round(windowWidth/inputText.length))
     }
 }
@@ -66,7 +66,7 @@ function fontMaker(inputText, frameCount){
     const letters = inputText.split("")
     //save the global font size
     let squishedFontSize = fontSize
-    // console.log(letters)
+    // //console.log(letters)
 
     // squeeze the width to fit
     
@@ -76,7 +76,7 @@ function fontMaker(inputText, frameCount){
     let textWidth = (letters.length)*squishedFontSize
     x = windowWidth/2 - textWidth/2
 
-    // console.log("numlines:", num_lines)
+    // //console.log("numlines:", num_lines)
     y = centerY
  
     for(const letter of letters){

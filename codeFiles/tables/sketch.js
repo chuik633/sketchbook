@@ -107,17 +107,17 @@ function draw_table(x0,y0, length, width, height, thickness, colorIdx){
 
 function display_tables(){
 
-    var gap = 150
-    var cellW = 40
-    var cellH = 40
-    for(var i = 0; i < 8; i++){
-        for (var j = 0; j < 5 ; j++){
+    var gap = 80
+    var cellW = 30
+    var cellH =30
+    for(var i = 0; i < 4; i++){
+        for (var j = 0; j < 4 ; j++){
             var colorIdx = Math.floor(Math.random() * 5);
             var table_H = Math.random()*cellH
 
             draw_table(
-                100 + (cellW + gap)*j, //x 
-                150 + (cellH + gap)*i, //y
+                50 + (cellW + gap)*j, //x 
+                100 + (cellH + gap)*i, //y
                 Math.random()*cellW, //length
                 Math.random()*cellW, //width
                 table_H,

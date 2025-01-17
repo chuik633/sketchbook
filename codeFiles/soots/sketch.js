@@ -71,7 +71,7 @@ function draw(){
       eyes_open = true //open the eyes nearby
       let point_push_mag = 1/(mouse_dist+1)*100
 
-      console.log(point_push_mag)
+      //console.log(point_push_mag)
       let nextX = noise(i * noiseFrequency, 0,
                     animationSpeed*
                         (frameCount + point_push_mag*5)) * width;
