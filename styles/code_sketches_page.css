@@ -47,4 +47,12 @@
     .code-sketches-page .grid.sketches-layout{
         grid-template-columns: repeat(1, 1fr);
     }
+    .code-preview{
+        flex-direction:column-reverse !important;
+        height: 100% !important;
+    }
+    .code-preview p{
+        height: 200px !important;
+        overflow-x:hidden;
+    }
 }

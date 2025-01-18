@@ -256,14 +256,19 @@ function resizeIframe(iframe) {
         const iframeBody = iframeDoc.body;
         console.log(iframeBody)
 
-        // Get content dimensions (body's width and height)
-        const contentWidth = iframeBody.scrollWidth;
-        const contentHeight = iframeBody.scrollHeight;
-
         // Get the container dimensions
         const container = iframe.node().parentElement;
         const containerWidth = container.offsetWidth;
         const containerHeight = container.offsetHeight;
+
+
+        // Get content dimensions (body's width and height)
+        const contentWidth = iframeBody.scrollWidth;
+        let contentHeight = iframeBody.scrollHeight;
+        if(contentHeight == 0){
+            contentHeight = containerHeight
+        }
+
 
         // Calculate the scaling factor based on content vs container size
         const scaleWidth = containerWidth / contentWidth;
@@ -271,6 +276,7 @@ function resizeIframe(iframe) {
 
         // Use the smaller scale factor to ensure content fits both width and height
         const scale = Math.min(scaleWidth, scaleHeight, 1); // Don't scale larger than the content
+        console.log(scaleWidth, scaleHeight)
         if(scale == 1){
             return
         }
@@ -278,7 +284,7 @@ function resizeIframe(iframe) {
         console.log('Content dimensions:', contentWidth, contentHeight);
         console.log('Scaling factor:', scale);
         const scaledWidth = contentWidth * scale;  // Apply scale to content width
-        const scaledHeight = contentHeight * scale;  // Apply scale to content height
+        const scaledHeight = Math.min(contentHeight * scale, containerHeight);  // Apply scale to content height
         console.log('Scaled dimensions:', scaledWidth, scaledHeight);
 
 
@@ -290,10 +296,14 @@ function resizeIframe(iframe) {
 
         // Optional: Center the iframe in the container
         iframe.style("top", `${(containerHeight - contentHeight) / 2}px`);
+        if(contentWidth>contentHeight && window.innerWidth < 600){
+            console.log("here", containerHeight, contentHeight)
+            iframe.style("top", `${-(containerHeight - scaledHeight) / 2}px`);
+        }
         // iframe.style("left", `${-(containerWidth - scaledWidth) / 2}px`);
 
   
-        d3.select(container).style('width',scaledWidth+"px")
+        d3.select(container).style('width',scaledWidth+"px").style('height',scaledHeight+"px")
     });
 }
 

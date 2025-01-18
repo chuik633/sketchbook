@@ -94,3 +94,20 @@
     height: 100px;
     border: .5px solid black;
 }
+@media (max-width: 600px){
+    .code-sketches-page .grid.sketches-layout{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .code-preview{
+        flex-direction:column !important;
+        height: 100% !important;
+    }
+    .code-preview p{
+        height: 200px !important;
+        overflow-x:hidden;
+    }
+    .popup-container .preview_images .preview-image{
+        height: 50px;
+
+    }
+}

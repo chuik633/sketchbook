@@ -49,8 +49,8 @@
 @media (max-width: 900px){
     .page{
 
-    padding: 80px;
-    padding-top: 100px;
+        padding: 80px;
+        padding-top: 100px;
     }
    
 }
@@ -60,14 +60,7 @@
         padding: 10px;
         padding-top: 100px;
     }
-    .code-preview{
-        flex-direction:column-reverse !important;
-        height: 100% !important;
-    }
-    .code-preview p{
-        height: 200px !important;
-        overflow-x:hidden;
-    }
+   
 }
 
 .header{
