@@ -39,6 +39,13 @@ for(const[page_name, page_info] of Object.entries(pages)){
         console.log("opening page", page_name)
         d3.selectAll(".page").style('visibility', 'hidden').style('z-index', -1)
         page.style('visibility', 'visible').style('z-index', 1)
+        if(window.innerWidth < 600){
+            const header = d3.select('.header')
+            header.selectAll("*").style('visibility', 'hidden');
+            header.style('visibility', 'hidden');
+            d3.select("#menuButton").attr('class', '');
+        }
+       
     })
     d3.selectAll(".page").style('visibility', 'hidden').style('z-index', -1)
 

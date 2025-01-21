@@ -56,3 +56,53 @@ h1 {
     transition: all .5s ease;
 
 }
+
+@media (max-width: 600px){
+    .header{
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        height: 100vh;
+        padding-top: 0px;
+        z-index:9;
+        transition: visibility .5s ease;
+        
+    }
+}
+
+#menuButton {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 20;
+    top: 10px;
+    right: 10px;
+    position: fixed;
+}
+
+/* Default line style */
+.line {
+    width: 30px;
+    height: 4px;
+    background-color: black;
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* When the menu is open (X state) */
+#menuButton.open .line:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+#menuButton.open .line:nth-child(2) {
+    opacity: 0;
+}
+
+#menuButton.open .line:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
