@@ -1,58 +1,56 @@
-
-.code-sketches-page .grid.sketches-layout{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: masonry;
+.code-sketches-page .grid.sketches-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: masonry;
 }
-.code-sketches-page .date{
-    display: none;
+.code-sketches-page .date {
+  display: none;
 }
-.code-sketches-page .sketch-container{
-    width: 100%;
-    aspect-ratio: inherit;
-    height: 100%;
-
+.code-sketches-page .sketch-container {
+  width: 100%;
+  aspect-ratio: inherit;
+  height: 100%;
 }
 
-.code-sketches-page .preview-image{
-    height: 100%;
-    width: auto;
-    object-fit:cover;
+.code-sketches-page .preview-image {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
 }
-.row.code-preview{
-    height: 65vh;
-    /* background-color: red; */
+.row.code-preview {
+  height: 65vh;
+  /* background-color: red; */
 }
-.code-preview p{
-    white-space: pre-wrap;
-    letter-spacing: -.5px;
-    padding: 20px;
-    text-align: left;
-    height: 100%;
-    max-height: 500px;
-    overflow-y: auto;
-    border: 0px solid black;
-    color: white;
-    background-color: black;
+.code-preview p {
+  white-space: pre-wrap;
+  letter-spacing: -0.5px;
+  padding: 20px;
+  text-align: left;
+  height: 100%;
+  max-height: 500px;
+  overflow-y: auto;
+  border: 0px solid black;
+  color: white;
+  background-color: black;
 }
 
 /*mobile is bigger */
-@media (max-width: 900px){
-    .code-sketches-page .grid.sketches-layout{
-        grid-template-columns: repeat(2, 1fr);
-    }
+@media (max-width: 900px) {
+  .code-sketches-page .grid.sketches-layout {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-@media (max-width: 600px){
-    .code-sketches-page .grid.sketches-layout{
-        grid-template-columns: repeat(1, 1fr);
-    }
-    .code-preview{
-        flex-direction:column-reverse !important;
-        height: 100% !important;
-    }
-    .code-preview p{
-        height: 200px !important;
-        overflow-x:hidden;
-    }
+@media (max-width: 600px) {
+  .code-sketches-page .grid.sketches-layout {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .code-preview {
+    flex-direction: column-reverse !important;
+    height: 100% !important;
+  }
+  .code-preview p {
+    height: 200px !important;
+    overflow-x: hidden;
+  }
 }

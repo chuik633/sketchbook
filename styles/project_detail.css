@@ -1,116 +1,110 @@
-.popup-container{
-    position:fixed;
-    z-index: 10;
-  
-    background-color: var(--current-back);
-    color: var(--current-front);
+.popup-container {
+  position: fixed;
+  z-index: 10;
 
-    border: .5px solid var(--current-front);
+  background-color: var(--current-back);
+  color: var(--current-front);
 
-    width: 96vw;
-    height: 96vh;
-    top: 2vh;
-    left: 2vw;
-    padding: 60px;
-    overflow-y: auto;
-    overflow-x: hidden;
+  border: 0.5px solid var(--current-front);
 
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  width: 96vw;
+  height: 96vh;
+  top: 2vh;
+  left: 2vw;
+  padding: 60px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.close-btn{
-    font-family: Futura;
-    font-weight: 100;
-    position:fixed;
-    top: 25px;
-    right: 3vw;
-    width: 20px;
-    height:20px;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-
+.close-btn {
+  font-family: Futura;
+  font-weight: 100;
+  position: fixed;
+  top: 25px;
+  right: 3vw;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .popup-container .project-blurb {
-    height: fit-content;
-    max-width: 500px;
+  height: fit-content;
+  max-width: 500px;
 }
 
-.popup-container .title_container{
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 5px; 
+.popup-container .title_container {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 5px;
 }
 
-
-.popup-container .image-controls{
-    display: none;
+.popup-container .image-controls {
+  display: none;
 }
 
-
-.popup-container .title{
-    font-size: 25px;
-    font-weight: 700;
-     text-transform: uppercase;
-     letter-spacing: 10px;;
+.popup-container .title {
+  font-size: 25px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 10px;
 }
 
-.popup-container .date{
-    font-size: 10px;
-   
+.popup-container .date {
+  font-size: 10px;
 }
-.popup-container .description{
-    font-size: 10px;
-    height: fit-content;
-    max-height: fit-content;
+.popup-container .description {
+  font-size: 10px;
+  height: fit-content;
+  max-height: fit-content;
 }
-.popup-container .info_container{
-    display: flex;
-    flex-direction: row;
-
+.popup-container .info_container {
+  display: flex;
+  flex-direction: row;
 }
 
-.popup-container .preview_images{
-    display: flex;
-    flex-direction:row;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    
-    align-items: flex-end;
-    height: 100%;
-    max-width: 50%;
-    gap: 10px
-}
-.popup-container .preview-image{
-   display: none;
-}
-.popup-container .preview_images .preview-image{
-    display: flex;
-    
-    width: fit-content;
-    height: 100px;
-    border: .5px solid black;
-}
-@media (max-width: 600px){
-    .code-sketches-page .grid.sketches-layout{
-        grid-template-columns: repeat(1, 1fr);
-    }
-    .code-preview{
-        flex-direction:column !important;
-        height: 100% !important;
-    }
-    .code-preview p{
-        height: 200px !important;
-        overflow-x:hidden;
-    }
-    .popup-container .preview_images .preview-image{
-        height: auto;
-        max-width: 60px;
-        
-        object-fit:contain;
+.popup-container .preview_images {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 
-    }
+  align-items: flex-end;
+  height: 100%;
+  max-width: 50%;
+  gap: 10px;
+}
+.popup-container .preview-image {
+  display: none;
+}
+.popup-container .preview_images .preview-image {
+  display: flex;
+  object-fit: contain;
+  width: fit-content;
+  height: 100px;
+  border: 0.5px solid black;
+}
+@media (max-width: 600px) {
+  .code-sketches-page .grid.sketches-layout {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .code-preview {
+    flex-direction: column !important;
+    height: 100% !important;
+  }
+  .code-preview p {
+    height: 200px !important;
+    overflow-x: hidden;
+  }
+  .popup-container .preview_images .preview-image {
+    height: auto;
+    max-width: 60px;
+
+    object-fit: contain;
+  }
 }
