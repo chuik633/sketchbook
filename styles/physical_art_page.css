@@ -1,3 +1,21 @@
-.physical-art-page{
-    
+.physical-art-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.physical-art-page h1 {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  font-size: 20px;
+}
+
+button {
+  border: 0.5px solid black;
+  padding: 10px 20px;
+  font-size: 10px;
+}
+button:hover {
+  background: black;
+  color: white;
 }

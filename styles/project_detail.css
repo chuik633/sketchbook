@@ -101,10 +101,21 @@
     height: 200px !important;
     overflow-x: hidden;
   }
+  .popup-container .preview_images {
+    max-width: 100%;
+    justify-content: flex-start;
+    /* flex-wrap: nowrap; */
+    overflow: auto;
+  }
   .popup-container .preview_images .preview-image {
-    height: auto;
-    max-width: 60px;
+    /* height: auto; */
+    height: 120px;
 
-    object-fit: contain;
+    /* max-width: 60px; */
+  }
+
+  .popup-container .popup-header {
+    flex-direction: column;
+    flex-wrap: nowrap;
   }
 }

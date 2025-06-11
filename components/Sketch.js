@@ -93,6 +93,9 @@ class Sketch {
           container
             .style("background-color", "inherit")
             .style("color", "black");
+        })
+        .on("click", () => {
+          this.previewCard();
         });
     }
 
@@ -105,7 +108,7 @@ class Sketch {
 
     const info_container = blurb
       .append("div")
-      .attr("class", "info_container column med-gap");
+      .attr("class", "info_container column med-gap space-between");
 
     if (this.date != undefined) {
       title_container.append("div").attr("class", "date").text(this.date);
@@ -147,7 +150,8 @@ class Sketch {
 
         let img_idx = preview_image.attr("img_idx") % this.images.length;
         //changing image
-        increase.on("click", () => {
+        increase.on("click", (event) => {
+          event.stopPropagation();
           img_idx = (preview_image.attr("img_idx") + 1) % this.images.length;
           preview_image.attr("img_idx", img_idx);
           preview_image.attr(
@@ -155,7 +159,8 @@ class Sketch {
             `${this.image_folder}${this.name}/${this.images[img_idx]}`
           );
         });
-        decrease.on("click", () => {
+        decrease.on("click", (event) => {
+          event.stopPropagation();
           img_idx =
             (preview_image.attr("img_idx") - 1 + this.images.length) %
             this.images.length;
@@ -200,7 +205,7 @@ class Sketch {
     //popup content
     const header = popup_container
       .append("div")
-      .attr("class", "row space-between med-gap");
+      .attr("class", "row space-between med-gap popup-header");
     this.appendBlurb(header, true);
     const images_container = header
       .append("div")

@@ -48,4 +48,6 @@ for (const [page_name, page_info] of Object.entries(pages)) {
   d3.selectAll(".page").style("visibility", "hidden").style("z-index", -1);
 }
 // home_page.style('visibility', 'visible').style('z-index', 1)
-pages["data viz"]["page"].style("visibility", "visible").style("z-index", 1);
+pages["physical art"]["page"]
+  .style("visibility", "visible")
+  .style("z-index", 1);

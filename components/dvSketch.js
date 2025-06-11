@@ -59,6 +59,9 @@ class dvSketch {
           container
             .style("background-color", "inherit")
             .style("color", "black");
+        })
+        .on("click", () => {
+          this.previewCard();
         });
     }
 
@@ -113,7 +116,8 @@ class dvSketch {
 
         let img_idx = preview_image.attr("img_idx") % this.images.length;
         //changing image
-        increase.on("click", () => {
+        increase.on("click", (event) => {
+          event.stopPropagation();
           img_idx = (preview_image.attr("img_idx") + 1) % this.images.length;
           preview_image.attr("img_idx", img_idx);
           preview_image.attr(
@@ -121,7 +125,8 @@ class dvSketch {
             `${this.image_folder}${this.name}/${this.images[img_idx]}`
           );
         });
-        decrease.on("click", () => {
+        decrease.on("click", (event) => {
+          event.stopPropagation();
           img_idx =
             (preview_image.attr("img_idx") - 1 + this.images.length) %
             this.images.length;
@@ -141,14 +146,6 @@ class dvSketch {
         .attr("class", "description hide-scrollbar")
         .text(this.description);
     }
-
-    // if(this.code_link != undefined){
-    //     blurb.append('a')
-    //         .attr("href", this.code_link)
-    //         .attr('class', 'link')
-    //         .text('see code')
-    //         .attr("target", "_blank")
-    // }
   }
 
   previewCard() {
@@ -166,16 +163,24 @@ class dvSketch {
     //popup content
     const header = popup_container
       .append("div")
-      .attr("class", "row space-between med-gap");
-    this.appendBlurb(header, true);
+      .attr("class", "row space-between med-gap popup-header");
+    const left_header = header
+      .append("div")
+      .attr("class", "column")
+      .style("gap", "15px");
+    this.appendBlurb(left_header, true);
 
     const images_container = header
       .append("div")
       .attr("class", "preview_images");
     this.appendImages(images_container, this.images);
 
-    this.makeButton("Open Project", this.project_link, popup_container);
-    this.makeButton("See Code", this.code_link, popup_container);
+    const button_container = left_header
+      .append("div")
+      .attr("class", "row")
+      .style("padding-top", "20px");
+    this.makeButton("Open Project", this.project_link, button_container);
+    this.makeButton("See Code", this.code_link, button_container);
 
     const process_images_container = popup_container
       .append("div")

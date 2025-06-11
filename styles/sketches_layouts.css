@@ -22,6 +22,7 @@
   padding: 50px;
   transition: background-color 0.2s ease;
 }
+
 #drag-panel {
   width: 3px;
   height: 100%;
@@ -41,9 +42,14 @@
   -ms-user-select: none; /* IE/Edge */
   user-select: none; /* Standard */
 }
-
+.dv-page .sketch-container {
+  width: 50%;
+}
 /*mobile is bigger */
 @media (max-width: 900px) {
+  .dv-page .sketch-container {
+    width: 100%;
+  }
   .sketch-container {
     width: 50%;
   }
